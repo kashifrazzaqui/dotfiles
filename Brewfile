@@ -18,8 +18,6 @@ brew 'htop'
 # Apps
 cask '1password'
 cask 'github'
-cask 'google-chrome'
-cask 'zoom'
 cask 'macvim'
 
 
