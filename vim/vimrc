@@ -1,6 +1,1 @@
-source ~/.vim/configuration/plugins.vim
-source ~/.vim/configuration/functions.vim
-source ~/.vim/configuration/settings.vim
-source ~/.vim/configuration/commands.vim
-source ~/.vim/configuration/autocommands.vim
-source ~/.vim/configuration/keybindings.vim
+/Users/kashifr/Dropbox/Mackup/.vim/vimrc
