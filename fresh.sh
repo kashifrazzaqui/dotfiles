@@ -4,9 +4,11 @@ echo "Setting up your system..."
 export DOTFILES=$HOME/code/dotfiles
 echo "DOTFILES is at $DOTFILES"
 
-# Check for Oh My Zsh and install if we don't have it
-if test ! $(which omz); then
-  /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
+if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+    # Check for Oh My Zsh and install if we don't have it
+    if test ! $(which omz); then
+    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
+    fi
 fi
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
