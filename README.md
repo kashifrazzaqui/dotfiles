@@ -30,10 +30,10 @@ After backing up your old Mac you may now follow these install instructions to s
 2. [Generate a new public and private SSH key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) by running:
 
    ```zsh
-   curl https://raw.githubusercontent.com/driesvints/dotfiles/HEAD/ssh.sh | sh -s "<your-email-address>"
+   curl https://raw.githubusercontent.com/kashifrazzaqui/dotfiles/HEAD/ssh.sh | sh -s "<your-email-address>"
    ```
 
-3. Clone this repo to `~/.dotfiles` with:
+3. Clone this repo to `~/code/dotfiles` with:
 
     ```zsh
     git clone --recursive git@github.com:driesvints/dotfiles.git ~/.dotfiles
@@ -42,7 +42,7 @@ After backing up your old Mac you may now follow these install instructions to s
 4. Run the installation with:
 
     ```zsh
-    ~/.dotfiles/fresh.sh
+    ~/code/dotfiles/fresh.sh
     ```
 
 5. After mackup is synced with your cloud storage, restore preferences by running `mackup restore`
@@ -50,7 +50,7 @@ After backing up your old Mac you may now follow these install instructions to s
 
 Your Mac is now ready to use!
 
-> 💡 You can use a different location than `~/.dotfiles` if you want. Make sure you also update the reference in the [`.zshrc`](./.zshrc#L2) file.
+> 💡 You can use a different location than `~/code/dotfiles` if you want. Make sure you also update the reference in the [`.zshrc`](./.zshrc#L2) file.
 
 ### Cleaning your old Mac (optionally)
 
