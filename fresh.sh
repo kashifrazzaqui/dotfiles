@@ -1,20 +1,12 @@
 #!/bin/sh
 
-echo "Setting up your Mac..."
+echo "Setting up your system..."
 export DOTFILES=$HOME/code/dotfiles
 echo "DOTFILES is at $DOTFILES"
 
 # Check for Oh My Zsh and install if we don't have it
 if test ! $(which omz); then
   /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
-fi
-
-# Check for Homebrew and install if we don't have it
-if test ! $(which brew); then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
-  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
@@ -24,21 +16,29 @@ ln -s $DOTFILES/.zshrc $HOME/.zshrc
 #hook up vim
 ln -s $DOTFILES/vim $HOME/.vim
 
+if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+    echo "Mac detected, doing the homebrew bits"
+    # Check for Homebrew and install if we don't have it
+    if test ! $(which brew); then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# Update Homebrew recipes
-echo "brew is updating..."
-brew update
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+    # Update Homebrew recipes
+    echo "brew is updating..."
+    brew update
+    # Install all our dependencies with bundle (See Brewfile)
+    brew tap homebrew/bundle
+    brew bundle --file $DOTFILES/Brewfile
+fi
 
-# Install all our dependencies with bundle (See Brewfile)
-brew tap homebrew/bundle
-brew bundle --file $DOTFILES/Brewfile
 
 # Clone Github repositories
 $DOTFILES/clone.sh
 echo "run source $HOME/code/zsh-snap/install.zsh"
 
-# Symlink the Mackup config file to the home directory
-ln -s $DOTFILES/.mackup.cfg $HOME/.mackup.cfg
-
-# Set macOS preferences - we will run this last because this will reload the shell
-source $DOTFILES/.macos
+if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+    # Set macOS preferences - we will run this last because this will reload the shell
+    source $DOTFILES/.macos
+fi
