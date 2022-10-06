@@ -1,8 +1,9 @@
 # Load dotfiles binaries
+export PATH=".:$PATH"
 export PATH="$DOTFILES/bin:$PATH"
-
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/Users/kashifr/bin:$PATH"
-export PATH=".:$PATH"
-
 export PATH="$HOME/homebrew/bin:$HOME/homebrew/sbin:$PATH"
+export PATH="/Users/kashifr/homebrew/opt/python@3.9/libexec/bin:$PATH"
+export PATH="/Users/kashifr/homebrew/bin/:$PATH"
+export PATH="/Users/kashifr/bin:$PATH"
