@@ -19,10 +19,10 @@ fi
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 rm -rf $HOME/.zshrc
-ln -s $HOME/code/dotfiles/.zshrc $HOME/.zshrc
+ln -s $DOTFILES/.zshrc $HOME/.zshrc
 
 #hook up vim
-ln -s $HOME/code/zsh/vim $HOME/.vim
+ln -s $DOTFILES/vim $HOME/.vim
 
 
 # Update Homebrew recipes
@@ -35,6 +35,7 @@ brew bundle --file $DOTFILES/Brewfile
 
 # Clone Github repositories
 $DOTFILES/clone.sh
+echo "run source $HOME/code/zsh-snap/install.zsh"
 
 # Symlink the Mackup config file to the home directory
 ln -s $DOTFILES/.mackup.cfg $HOME/.mackup.cfg

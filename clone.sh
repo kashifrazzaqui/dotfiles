@@ -2,4 +2,4 @@
 
 echo "Cloning repositories...none."
 
-#git clone git@github.com:laravel/beep.git $LARAVEL/beep
+git clone git@github.com:marlonrichert/zsh-snap.git $HOME/code/zsh-snap
