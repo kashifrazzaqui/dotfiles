@@ -63,6 +63,7 @@ function zap()
     mkdir -p ~/empty
     rsync -a --delete ~/empty/ $1
     rm -rf ~/empty
+    rm -rf $1
 }
 
 function hgl() {
@@ -72,4 +73,28 @@ function hgl() {
     else
         hg log --template '{node|short} {author|user} {desc|strip|firstline}\n'
     fi
+}
+
+function ytdl() {
+    pushd ~/Videos
+    yt-dlp -v -N 4 --buffer-size 16000 --restrict-filenames "$1"
+    popd
+}
+
+function ytdlp() {
+    pushd ~/Videos
+    mkdir $1
+    pushd $1
+    yt-dlp -v -N 4 --buffer-size 16000 --restrict-filenames --yes-playlist "$2"
+    popd
+    popd
+}
+
+function cp2server() {
+    scp $1 "kashifr@devvm744.rva0.facebook.com:."
+}
+
+function cp4mserver() {
+    # Copy a file from server using scp
+    scp "kashifr@devvm744.rva0.facebook.com:$1" $2
 }

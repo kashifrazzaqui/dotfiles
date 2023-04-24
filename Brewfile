@@ -1,29 +1,58 @@
-# Taps
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
-tap 'homebrew/cask-versions'
-tap 'homebrew/bundle'
-
-# Binaries
-brew 'ffmpeg'
-brew 'gh'
-brew 'git'
-brew 'grep'
-brew 'httpie'
-brew 'mackup'
-brew 'mas' # Mac App Store manager
-brew 'tldr'
-brew 'htop'
-
-# Apps
-cask '1password'
-cask 'github'
-cask 'macvim'
-
-
-# Fonts
-cask 'font-fira-code'
-
-# Mac App Store
-mas 'Things', id: 904280696
-
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+tap "homebrew/core"
+tap "romkatv/powerlevel10k"
+tap "teamookla/speedtest"
+brew "autossh"
+brew "gettext"
+brew "awscli"
+brew "pcre2"
+brew "glib"
+brew "pkg-config"
+brew "cloc"
+brew "cmake"
+brew "difftastic"
+brew "exercism"
+brew "gh"
+brew "git"
+brew "git-lfs"
+brew "grep"
+brew "htop"
+brew "httpie"
+brew "iozone"
+brew "iperf3"
+brew "ipython"
+brew "libarchive"
+brew "mackup"
+brew "mas"
+brew "ninja"
+brew "meson"
+brew "midnight-commander"
+brew "nim"
+brew "nload"
+brew "perl"
+brew "sdl2"
+brew "sdl2_gfx"
+brew "sdl2_image"
+brew "sdl2_mixer"
+brew "sdl2_net"
+brew "sdl2_ttf"
+brew "sdl_ttf"
+brew "sloccount"
+brew "speedtest-cli", link: false
+brew "terraform"
+brew "tldr"
+brew "tmux"
+brew "wget"
+brew "ykman"
+brew "youtube-dl"
+brew "yt-dlp"
+brew "zsh"
+brew "romkatv/powerlevel10k/powerlevel10k"
+brew "teamookla/speedtest/speedtest"
+cask "1password"
+cask "font-hack-nerd-font"
+cask "github"
+cask "sloth"

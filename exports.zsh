@@ -19,3 +19,4 @@ export JAVA_HOME=$JAVA_8
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 export PUNT_CONFIG='~/.punt'
+export DYLD_LIBRARY_PATH=/Users/kashifr/homebrew/lib:$DYLD_LIBRARY_PATH
