@@ -98,3 +98,13 @@ function cp4mserver() {
     # Copy a file from server using scp
     scp "kashifr@devvm744.rva0.facebook.com:$1" $2
 }
+
+function nimr() {
+    # nim r doesn't work because of MacOS SIP issues
+    # with DYLD paths being stripped, this fixes that
+    IFS=\. read -A fields <<<"$1"
+    echo $fields[1]
+
+    nim c $1
+    $fields[1]
+}
