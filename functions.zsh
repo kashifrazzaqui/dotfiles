@@ -108,3 +108,15 @@ function nimr() {
     nim c $1
     $fields[1]
 }
+
+function alias_last_command() {
+  if [ "$#" -ne 1 ]; then
+    echo "Usage: alias_last_command <alias_name>"
+    return 1
+  fi
+  local alias_name="$1"
+  local last_command=$(fc -ln -1)
+  alias "$alias_name"="$last_command"
+  echo "Alias '$alias_name' created for '$last_command'"
+}
+
