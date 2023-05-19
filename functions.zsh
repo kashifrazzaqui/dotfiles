@@ -116,7 +116,31 @@ function alias_last_command() {
   fi
   local alias_name="$1"
   local last_command=$(fc -ln -1)
-  alias "$alias_name"="$last_command"
+  echo "alias $alias_name=\"$last_command\"" >> ~/code/dotfile/aliases.zsh
   echo "Alias '$alias_name' created for '$last_command'"
 }
 
+function color_print() {
+    # Define an array of color codes
+    local colors=(31 32 33 34 35 36 37)
+
+    # Split the input into words
+    local words=("${(@s/ /)1}")
+
+    # Initialize color index
+    local i=0
+
+    # Iterate over each word
+    for word in "${words[@]}"; do
+        # Select color
+        local color=${colors[i]}
+
+        # Print the word with color
+        echo -ne "\e[${color}m${word}\e[0m "
+
+        # Increment color index, and wrap around if necessary
+        i=$(( (i + 1) % ${#colors} ))
+    done
+    echo -ne "\n\c"
+
+}

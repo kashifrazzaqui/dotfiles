@@ -3,6 +3,8 @@ alias copyssh="pbcopy < $HOME/.ssh/id_ed25519.pub"
 alias s="source $HOME/.zshrc"
 alias reloaddns="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
 alias ll="exa -lh"
+alias ls="exa"
+alias find="fd"
 
 # Directories
 alias dotfiles="cd $DOTFILES"

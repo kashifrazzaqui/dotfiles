@@ -5,34 +5,40 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "romkatv/powerlevel10k"
 tap "teamookla/speedtest"
+brew "atuin"
 brew "autossh"
 brew "gettext"
 brew "awscli"
+brew "bats-core"
+brew "bottom"
 brew "pcre2"
 brew "glib"
 brew "pkg-config"
 brew "cloc"
 brew "cmake"
+brew "cookiecutter"
 brew "difftastic"
 brew "exercism"
+brew "fd"
 brew "gh"
 brew "git"
 brew "git-lfs"
 brew "grep"
 brew "htop"
 brew "httpie"
-brew "iozone"
 brew "iperf3"
 brew "ipython"
 brew "libarchive"
+brew "macchina"
 brew "mackup"
 brew "mas"
 brew "ninja"
 brew "meson"
-brew "midnight-commander"
+brew "miniserve"
 brew "nim"
-brew "nload"
 brew "perl"
+brew "procs"
+brew "ripgrep"
 brew "sdl2"
 brew "sdl2_gfx"
 brew "sdl2_image"
@@ -42,10 +48,13 @@ brew "sdl2_ttf"
 brew "sdl_ttf"
 brew "sloccount"
 brew "speedtest-cli", link: false
+brew "tealdeer"
 brew "terraform"
-brew "tldr"
 brew "tmux"
+brew "tokei"
+brew "tree"
 brew "wget"
+brew "xh"
 brew "ykman"
 brew "youtube-dl"
 brew "yt-dlp"
@@ -56,3 +65,17 @@ cask "1password"
 cask "font-hack-nerd-font"
 cask "github"
 cask "sloth"
+mas "AdBlock Pro", id: 1018301773
+mas "Agenda", id: 1287445660
+mas "Bitwarden", id: 1352778147
+mas "Codye", id: 1516894961
+mas "DaisyDisk", id: 411643860
+mas "Dato", id: 1470584107
+mas "Droplr", id: 498672703
+mas "Flycut", id: 442160987
+mas "HP Easy Scan", id: 967004861
+mas "HP Smart", id: 1474276998
+mas "OneTab", id: 1540160809
+mas "Quiver", id: 866773894
+mas "Save to Pocket", id: 1477385213
+mas "Things", id: 904280696
