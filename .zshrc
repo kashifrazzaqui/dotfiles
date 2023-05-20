@@ -3,7 +3,6 @@ export DOTFILES=$HOME/code/dotfiles
 
 . $DOTFILES/exports.zsh
 . $DOTFILES/paths.zsh
-. $HOME/code/zsh-snap/znap.zsh
 . $DOTFILES/powerlevel.zsh
 . $DOTFILES/functions.zsh
 . $DOTFILES/aliases.zsh
