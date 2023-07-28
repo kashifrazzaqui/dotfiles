@@ -85,7 +85,7 @@ function ytdlp() {
     pushd ~/Videos
     mkdir $1
     pushd $1
-    yt-dlp -v -N 4 --buffer-size 16000 --restrict-filenames --yes-playlist "$2"
+    yt-dlp -v -N 4 --buffer-size 16000 --restrict-filenames --yes-playlist $2
     popd
     popd
 }
