@@ -11,6 +11,7 @@ brew "gettext"
 brew "awscli"
 brew "bats-core"
 brew "bottom"
+brew "btm"
 brew "pcre2"
 brew "glib"
 brew "pkg-config"
@@ -18,14 +19,13 @@ brew "cloc"
 brew "cmake"
 brew "cookiecutter"
 brew "difftastic"
-brew "exercism"
+brew "exa"
 brew "fd"
 brew "gh"
 brew "git"
 brew "git-lfs"
+brew "gping"
 brew "grep"
-brew "htop"
-brew "httpie"
 brew "iperf3"
 brew "ipython"
 brew "libarchive"
@@ -67,15 +67,12 @@ cask "github"
 cask "sloth"
 mas "AdBlock Pro", id: 1018301773
 mas "Agenda", id: 1287445660
-mas "Bitwarden", id: 1352778147
-mas "Codye", id: 1516894961
 mas "DaisyDisk", id: 411643860
 mas "Dato", id: 1470584107
 mas "Droplr", id: 498672703
 mas "Flycut", id: 442160987
 mas "HP Easy Scan", id: 967004861
 mas "HP Smart", id: 1474276998
-mas "OneTab", id: 1540160809
 mas "Quiver", id: 866773894
 mas "Save to Pocket", id: 1477385213
 mas "Things", id: 904280696
