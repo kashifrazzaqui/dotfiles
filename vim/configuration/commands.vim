@@ -7,7 +7,7 @@ if has('gui_running')
             " Do nothing
         else
             set macligatures
-            set guifont=Fira\ Code\ Retina:h18
+            set guifont=Fira\ Code\ Retina:h20
         endif
     endif
 

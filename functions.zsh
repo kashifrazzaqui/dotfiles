@@ -142,5 +142,37 @@ function color_print() {
         i=$(( (i + 1) % ${#colors} ))
     done
     echo -ne "\n\c"
-
 }
+
+function convert-file-to-unix-newline() {
+    cat $1 | tr '\r' '\n' | tr -s '\n' > $2
+}
+
+function vpn-up() {
+export TF_VAR_public_ip=$PUBLIC_IP
+echo "PUBLIC IP: $TF_VAR_public_ip"
+unset AWS_REGION;
+unset AWS_DEFAULT_REGION;
+export AWS_PROFILE=default;
+export AWS_DEFAULT_REGION=$1;
+export TF_VAR_region=$1;
+cd ~/code/terraform-aws-openvpn-ephemeral/examples/default-instance-size;
+terragrunt init --terragrunt-non-interactive;
+terragrunt apply -auto-approve;
+mv openvpn.ovpn ~;
+cd ~;
+open openvpn.ovpn;
+}
+
+function vpn-down() {
+export AWS_PROFILE=default;
+export AWS_DEFAULT_REGION=$1;
+export TF_VAR_region=$1;
+cd ~;
+rm *.ovpn;
+cd ~/code/terraform-aws-openvpn-ephemeral/examples/default-instance-size;
+terragrunt destroy -auto-approve;
+rm -rf .terraform && rm -rf .terraform.lock.hcl;
+}
+
+
