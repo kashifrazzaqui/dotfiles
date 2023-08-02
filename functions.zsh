@@ -179,28 +179,37 @@ function aws-ssh() {
 ssh -i ~/.ssh/champion_rsa  ubuntu@$1
 }
 
-# This function checks if there are any uncommitted Git changes in all subdirectories.
 function uncommited() {
+    # This function checks if there are any uncommitted Git changes in all subdirectories.
+    # The directory to check is the first argument.
+    local dir_to_check="$1"
+
   # Save the current working directory.
   local parent_path="$PWD"
 
+  # Ensure the directory exists before proceeding.
+  if [[ ! -d "$dir_to_check" ]]; then
+      echo "$dir_to_check does not exist or is not a directory."
+      return 1
+  fi
+
   # Find all directories that contain a .git subdirectory.
-  for dir in $(fd -t d -HI --exclude '*/.git/*' .git .); do
-    # The directory containing the .git subdirectory is the Git repository.
-    # In this case, since we're finding the .git subdirectories themselves, the repository is the parent directory.
-    local repo_dir=$(dirname "$dir")
+  for dir in $(fd -t d -HI --exclude '*/.git/*' .git "$dir_to_check"); do
+      # The directory containing the .git subdirectory is the Git repository.
+      # In this case, since we're finding the .git subdirectories themselves, the repository is the parent directory.
+      local repo_dir=$(dirname "$dir")
 
     # Navigate into the Git repository.
     cd "$repo_dir"
 
     # Check if there are any uncommitted changes.
     if [[ -n $(git status --porcelain) ]]; then
-      # If there are, print the name of the repository.
-      echo "Uncommitted changes in: $repo_dir"
+        # If there are, print the name of the repository.
+        echo "Uncommitted changes in: $repo_dir"
     fi
 
     # Navigate back to the original working directory.
     cd "$parent_path"
-  done
+done
 }
 
