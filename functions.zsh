@@ -22,18 +22,18 @@ function reindex() {
 }
 
 function code() {
-	cd ~/code/$1
+    cd ~/code/$1
 }
 
 #Change directory & list files
 function cl() {
-   cd $1
-   ls -la
+    cd $1
+    ls -la
 }
 #Make directory & enter it
 function mkcd() {
-   mkdir -p $1
-   cd $1
+    mkdir -p $1
+    cd $1
 }
 
 function unmount()
@@ -110,14 +110,14 @@ function nimr() {
 }
 
 function alias_last_command() {
-  if [ "$#" -ne 1 ]; then
-    echo "Usage: alias_last_command <alias_name>"
-    return 1
-  fi
-  local alias_name="$1"
-  local last_command=$(fc -ln -1)
-  echo "alias $alias_name=\"$last_command\"" >> ~/code/dotfile/aliases.zsh
-  echo "Alias '$alias_name' created for '$last_command'"
+    if [ "$#" -ne 1 ]; then
+        echo "Usage: alias_last_command <alias_name>"
+        return 1
+    fi
+    local alias_name="$1"
+    local last_command=$(fc -ln -1)
+    echo "alias $alias_name=\"$last_command\"" >> ~/code/dotfile/aliases.zsh
+    echo "Alias '$alias_name' created for '$last_command'"
 }
 
 function color_print() {
@@ -145,7 +145,7 @@ function color_print() {
 }
 
 function convert-file-to-unix-newline() {
-    cat $1 | tr '\r' '\n' | tr -s '\n' > $2
+cat $1 | tr '\r' '\n' | tr -s '\n' > $2
 }
 
 function vpn-up() {
@@ -175,4 +175,7 @@ terragrunt destroy -auto-approve;
 rm -rf .terraform && rm -rf .terraform.lock.hcl;
 }
 
+function aws-ssh() {
+ssh -i ~/.ssh/champion_rsa  ubuntu@$1
+}
 
