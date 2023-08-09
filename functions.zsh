@@ -213,3 +213,45 @@ function uncommited() {
 done
 }
 
+# Function to set the toggle directories
+toggle-setup() {
+# Check if two arguments are provided
+if [ "$#" -ne 2 ]; then
+    echo "Usage: toggle-setup <dir1> <dir2>"
+    return 1
+fi
+
+    # Create the ~/.toggle directory if it doesn't exist
+    mkdir -p ~/.toggle
+
+    # Write the two paths to the config file
+    echo "$1" > ~/.toggle/config
+    echo "$2" >> ~/.toggle/config
+}
+
+# Function to toggle between the directories
+
+toggle() {
+    # Check if the config file exists
+    if [ ! -f ~/.toggle/config ]; then
+        echo "Toggle directories not set. Use toggle-setup to configure."
+        return 1
+    fi
+
+    # Read the paths from the config file
+    local dirs
+    IFS=$'\n' dirs=($(<~/.toggle/config))
+    local dir1="${dirs[1]}"
+    local dir2="${dirs[2]}"
+
+    # If TOGGLE_LAST_DIR is not set or is set to dir2, cd to dir1
+    # otherwise, cd to dir2
+    if [ -z "$TOGGLE_LAST_DIR" ] || [ "$TOGGLE_LAST_DIR" = "$dir2" ]; then
+        cd "$dir1"
+        export TOGGLE_LAST_DIR="$dir1"
+    else
+        cd "$dir2"
+        export TOGGLE_LAST_DIR="$dir2"
+    fi
+}
+

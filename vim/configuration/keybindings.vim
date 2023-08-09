@@ -24,6 +24,7 @@ nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
 vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
 nnoremap <silent> <leader> :WhichKey ','<CR>
+nnoremap <leader>f :Autoformat<CR>
 
 
 " Reselect visual selection after indenting
@@ -55,7 +56,6 @@ nmap <leader>N :NERDTreeFind<CR>
 
 
 "Code related bindings
-nnoremap <localleader>f :Autoformat<CR>
 nmap <silent> <localleader>t :TestFile --verbose<CR>
 nnoremap <localleader>sf :!~/homebrew/bin/swift-format -i %<CR>
 nnoremap <localleader>sl :!~/homebrew/bin/swift-format lint %<CR>
