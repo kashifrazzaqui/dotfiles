@@ -90,13 +90,14 @@ function ytdlp() {
     popd
 }
 
+
 function cp2server() {
-    scp $1 "kashifr@devvm744.rva0.facebook.com:."
+    scp $1 $FB_DEV_SERVER":."
 }
 
 function cp4mserver() {
     # Copy a file from server using scp
-    scp "kashifr@devvm744.rva0.facebook.com:$1" $2
+    scp $FB_DEV_SERVER:$1 $2
 }
 
 function nimr() {
