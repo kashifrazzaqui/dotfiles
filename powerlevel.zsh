@@ -20,7 +20,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 plugins=(iterm2 vi-mode jsontools python pip sudo colorize colored-man-pages gnu-utils virtualenv)
 
 if [ "$(uname 2> /dev/null)" != "Linux" ]; then
-    source ~/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+    source ~/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
 else
     source ~/code/powerlevel10k/powerlevel10k.zsh-theme
 fi
