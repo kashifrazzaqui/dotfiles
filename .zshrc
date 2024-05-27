@@ -10,7 +10,7 @@ export DOTFILES=$HOME/code/dotfiles
 
 eval "$(atuin init zsh)"
 macchina
-color_print "exa dust zellij speedtest atuin btm fd http procs tokei tree ytdl ykman miniserve rg xh gping"
+color_print "exa dust zellij speedtest atuin btm fd http procs tokei tree ytdl ykman miniserve rg xh gping thefuck(fk)"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -18,3 +18,6 @@ color_print "exa dust zellij speedtest atuin btm fd http procs tokei tree ytdl y
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# Created by `pipx` on 2024-05-24 23:09:00
+export PATH="$PATH:/Users/kashifr/.local/bin"

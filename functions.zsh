@@ -61,7 +61,7 @@ function punt-cs()
 function zap()
 {
     mkdir -p ~/empty
-    rsync -a --delete ~/empty/ $1
+    rsync -a --delete --progress ~/empty/ $1
     rm -rf ~/empty
     rm -rf $1
 }

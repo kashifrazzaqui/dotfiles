@@ -45,4 +45,4 @@ alias myip='localip; ip'
 alias hoistdost='hoist.py ~/fbo/fbobjc/Libraries/PortalXD/PortalXD ~/code/dost/Sources/dost ~/.hoist/fm_dost'
 alias dev114="ssh $FB_DEV_SERVER"
 alias ec2="ssh -i ~/.ssh/champion_rsa  ubuntu@ec2-54-166-62-236.compute-1.amazonaws.com"
-alias python=/Users/kashifr/homebrew/bin//python3
+alias fk="thefuck"

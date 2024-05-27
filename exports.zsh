@@ -25,4 +25,3 @@ export CPPFLAGS="-I/Users/kashifr/homebrew/include"
 export PUBLIC_IP=$(curl --silent ipaddr.io)
 export TOGGLE_LAST_DIR
 
-
