@@ -7,7 +7,7 @@ if has('gui_running')
             " Do nothing
         else
             set macligatures
-            set guifont=Fira\ Code\ Retina:h20
+            set guifont=Fira\ Code\ Retina:h22
         endif
     endif
 
@@ -65,7 +65,7 @@ set noshowmode " Hides default insert indicator - we have lightline
 set ignorecase
 set smartcase
 set showmode
-set syntax
+syntax on
 set pastetoggle=<F2>
 set tabstop=4
 set shiftwidth=4
@@ -88,7 +88,6 @@ set relativenumber
 set scrolloff=4
 set sidescrolloff=4
 set splitright
-set confirm
 set updatetime=300 " Reduce time for highlighting other references
 
 set statusline=
