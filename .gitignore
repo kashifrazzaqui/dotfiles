@@ -1,3 +1,4 @@
 bundle*
 undodir*
 plug.vim.old
+*.key
