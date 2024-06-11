@@ -265,7 +265,8 @@ function mkcd() {
 
 # Weather
 function weather() {
-    curl "wttr.in/$1"
+    local location=${1:-Barnes}
+    curl "wttr.in/$location"
 }
 
 #Pretty JSON
