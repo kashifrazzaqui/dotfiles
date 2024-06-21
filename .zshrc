@@ -10,6 +10,7 @@ export DOTFILES=$HOME/code/dotfiles
 eval "$(atuin init zsh)"
 macchina
 color_print "exa dust zellij speedtest atuin btm fd http procs tokei tree ytdl ykman miniserve rg xh gping thefuck(fk) trip"
+date
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]

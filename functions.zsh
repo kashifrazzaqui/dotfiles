@@ -274,3 +274,35 @@ function json_pretty() {
     python -m json.tool < "$1" | pygmentize -l json
 }
 
+
+# Function to copy the full contents of a directory with progress
+function copyd() {
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: copyd <source_directory> <destination_directory>"
+        return 1
+    fi
+
+    local source_directory="$1"
+    local destination_directory="$2"
+
+    if [ ! -d "$source_directory" ]; then
+        echo "Error: Source directory does not exist."
+        return 1
+    fi
+
+    total_size=$(du -sk "$source_directory" | awk '{print $1}')
+    total_size=$((total_size * 1024))  # Convert from kilobytes to bytes
+
+    rsync -av --progress "$source_directory"/ "$destination_directory" | pv -s $total_size > /dev/null
+
+    if [ $? -eq 0 ]; then
+        echo "Contents copied successfully from $source_directory to $destination_directory."
+    else
+        echo "Error occurred while copying contents."
+        return 1
+    fi
+}
+
+# Example usage
+# copyd /path/to/source /path/to/destination
+
