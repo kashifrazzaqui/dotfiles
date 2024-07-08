@@ -62,9 +62,9 @@ function appversion() {
 
 # Set PUNT configuration and start adb logcat with PUNT
 function punt-cs() {
-    export PUNT_CONFIG="~/code/punt_config/punt_comp"
-    cat ~/code/punt_config/punt_comp
-    adb logcat | punt
+export PUNT_CONFIG="~/code/punt_config/punt_comp"
+cat ~/code/punt_config/punt_comp
+adb logcat | punt
 }
 
 # Remove all files in a directory
@@ -146,70 +146,62 @@ function color_print() {
 
 # Convert a file to use Unix newlines
 function convert-file-to-unix-newline() {
-    cat $1 | tr '\r' '\n' | tr -s '\n' > $2
+cat $1 | tr '\r' '\n' | tr -s '\n' > $2
 }
 
 # Set up and connect to VPN
 function vpn-up() {
-    export TF_VAR_public_ip=$PUBLIC_IP
-    echo "PUBLIC IP: $TF_VAR_public_ip"
-    unset AWS_REGION
-    unset AWS_DEFAULT_REGION
-    export AWS_PROFILE=default
-    export AWS_DEFAULT_REGION=$1
-    export TF_VAR_region=$1
-    cd ~/code/terraform-aws-openvpn-ephemeral/examples/default-instance-size
-    terragrunt init --terragrunt-non-interactive
-    terragrunt apply -auto-approve
-    mv openvpn.ovpn ~
-    cd ~
-    open openvpn.ovpn
+export TF_VAR_public_ip=$PUBLIC_IP
+echo "PUBLIC IP: $TF_VAR_public_ip"
+unset AWS_REGION
+unset AWS_DEFAULT_REGION
+export AWS_PROFILE=default
+export AWS_DEFAULT_REGION=$1
+export TF_VAR_region=$1
+cd ~/code/terraform-aws-openvpn-ephemeral/examples/default-instance-size
+terragrunt init --terragrunt-non-interactive
+terragrunt apply -auto-approve
+mv openvpn.ovpn ~
+cd ~
+open openvpn.ovpn
 }
 
 # Disconnect VPN and clean up
 function vpn-down() {
-    export AWS_PROFILE=default
-    export AWS_DEFAULT_REGION=$1
-    export TF_VAR_region=$1
-    cd ~
-    rm *.ovpn
-    cd ~/code/terraform-aws-openvpn-ephemeral/examples/default-instance-size
-    terragrunt destroy -auto-approve
-    rm -rf .terraform && rm -rf .terraform.lock.hcl
+export AWS_PROFILE=default
+export AWS_DEFAULT_REGION=$1
+export TF_VAR_region=$1
+cd ~
+rm *.ovpn
+cd ~/code/terraform-aws-openvpn-ephemeral/examples/default-instance-size
+terragrunt destroy -auto-approve
+rm -rf .terraform && rm -rf .terraform.lock.hcl
 }
 
 # SSH into an AWS instance
 function aws-ssh() {
-    ssh -i ~/.ssh/champion_rsa ubuntu@$1
+ssh -i ~/.ssh/champion_rsa ubuntu@$1
 }
 
-# Check for uncommitted Git changes in all subdirectories
-function uncommited() {
-    local dir_to_check="$1"
-    local parent_path="$PWD"
-    if [[ ! -d "$dir_to_check" ]]; then
-        echo "$dir_to_check does not exist or is not a directory."
-        return 1
+function git-dirty() {
+local search_path="${1:-.}"
+
+for dir in "$search_path"/**/.git(/:h); do
+    if ! git -C "$dir" diff-index --quiet HEAD --; then
+        echo "$dir"
     fi
-    for dir in $(fd -t d -HI --exclude '*/.git/*' .git "$dir_to_check"); do
-        local repo_dir=$(dirname "$dir")
-        cd "$repo_dir"
-        if [[ -n $(git status --porcelain) ]]; then
-            echo "Uncommitted changes in: $repo_dir"
-        fi
-        cd "$parent_path"
-    done
+done
 }
 
 # Set up toggle directories
 function toggle-setup() {
-    if [ "$#" -ne 2 ]; then
-        echo "Usage: toggle-setup <dir1> <dir2>"
-        return 1
-    fi
-    mkdir -p ~/.toggle
-    echo "$1" > ~/.toggle/config
-    echo "$2" >> ~/.toggle/config
+if [ "$#" -ne 2 ]; then
+    echo "Usage: toggle-setup <dir1> <dir2>"
+    return 1
+fi
+mkdir -p ~/.toggle
+echo "$1" > ~/.toggle/config
+echo "$2" >> ~/.toggle/config
 }
 
 # Toggle between two directories
@@ -367,17 +359,17 @@ gpt() {
 # git repository greeter
 last_repository=
 check_directory_for_new_repository() {
-	current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
+    current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
 
-	if [ "$current_repository" ] && \
-	   [ "$current_repository" != "$last_repository" ]; then
-		onefetch
-	fi
-	last_repository=$current_repository
+    if [ "$current_repository" ] && \
+        [ "$current_repository" != "$last_repository" ]; then
+            onefetch
+    fi
+    last_repository=$current_repository
 }
 
 cd() {
-	builtin cd "$@"
-	check_directory_for_new_repository
+    builtin cd "$@"
+    check_directory_for_new_repository
 }
 
