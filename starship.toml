@@ -1,0 +1,153 @@
+format = """
+[](#FFF192)\
+$os\
+$username\
+[](bg:#966FD6 fg:#FFF192)\
+$directory\
+[](fg:#966FD6 bg:#86BBD8)\
+$c\
+$java\
+$nodejs\
+$nim\
+$python\
+$rust\
+[](fg:#86BBD8 bg:#06969A)\
+$docker_context\
+[](fg:#06969A bg:#33658A)\
+$time\
+[ ](fg:#33658A)\
+"""
+
+right_format = """
+$git_branch\
+$git_status\
+$battery\
+$env_var\
+"""
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+[battery]
+disabled = false
+
+[[battery.display]]
+threshold = 20
+style = "bg:#000000 fg:#ff0000"
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
+[username]
+show_always = true
+style_user = "bg:#9A348E"
+style_root = "bg:#9A348E"
+format = '[$user ]($style)'
+disabled = true
+
+# An alternative to the username module which displays a symbol that
+# represents the current operating system
+[os]
+style = "bg:#FFF192 fg:#000000"
+disabled = false # Disabled by default
+
+# This is the default symbols table.
+[os.symbols]
+Amazon = "🙂 "
+Android = "🤖 "
+Arch = "🎗️ "
+CentOS = "💠 "
+Debian = "🌀 "
+Fedora = "🎩 "
+FreeBSD = "😈 "
+Gentoo = "🗜️ "
+Linux = "🐧 "
+Macos = " "
+OpenBSD = "🐡 "
+Ubuntu = "🎯 "
+Unknown = "❓ "
+Windows = "🪟 "
+
+[directory]
+style = "bg:#966FD6 fg:#000000"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# ~/.config/starship.toml
+
+[env_var]
+variable = "PUBLIC_IP"
+default = 'x.x.x.x'
+symbol = ""
+disabled = true
+format = "[ $symbol $env_value]($style) "
+
+[c]
+symbol = ""
+style = "bg:#86BBD8 fg:#000000"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:#86BBD8 fg:#000000"
+format = '[ $symbol $context ]($style)'
+
+[elixir]
+symbol = " "
+style = "bg:#86BBD8 fg:#000000"
+format = '[ $symbol ($version) ]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:#6FC276 fg:#000000"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#6FC276 fg:#000000"
+format = '[$all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#86BBD8 fg:#000000"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:#86BBD8 fg:#000000"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "bg:#86BBD8 fg:#000000"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "bg:#86BBD8 fg:#000000"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = " "
+style = "bg:#86BBD8 fg:#000000"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = " "
+style = "bg:#86BBD8 fg:#000000"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = " "
+style = "bg:#86BBD8 fg:#000000"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = " "
+style = "bg:#86BBD8 fg:#000000"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#33658A"
+format = '[  $time ]($style)'
