@@ -47,3 +47,5 @@ alias dev114="ssh $FB_DEV_SERVER"
 alias ec2="ssh -i ~/.ssh/champion_rsa  ubuntu@ec2-54-166-62-236.compute-1.amazonaws.com"
 alias fk="thefuck"
 alias stocks="ticker -w GME,MSTR,FBTC,TSM,NVDA,ASML,AMD,AMZN,ADBE,META,LLY,GOOG,NFLX,PG,ISRG,COST,FANUY,TER,MSFT,NIFTY,AAPL"
+alias fzf='fzf --preview="bat --color=always {}"'
+alias vimfzf='vim $(fzf -m --preview="bat --color=always {}")'

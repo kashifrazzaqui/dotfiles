@@ -276,6 +276,9 @@ function json_pretty() {
 
 
 # Function to copy the full contents of a directory with progress
+# Example usage
+# copyd /path/to/source /path/to/destination
+#
 function copyd() {
     if [ "$#" -ne 2 ]; then
         echo "Usage: copyd <source_directory> <destination_directory>"
@@ -303,6 +306,78 @@ function copyd() {
     fi
 }
 
-# Example usage
-# copyd /path/to/source /path/to/destination
+
+gpt() {
+    # Help function
+    show_help() {
+        echo "Usage: gpt <command> <url>"
+        echo "Options:"
+        echo "  -h, --help    Show this help message"
+        echo "  -yt           Use 'yt' command instead of 'http' (for YouTube URLs)"
+        echo "Example: gpt summarize https://example.com"
+    }
+
+    # Check for help option
+    if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+        show_help
+        return 0
+    fi
+
+    # Check if we have the correct number of arguments
+    if [[ $# -lt 2 ]]; then
+        echo "Error: Insufficient arguments"
+        show_help
+        return 1
+    fi
+
+    local command=$1
+    local url=$2
+    local fetch_cmd="http"
+
+    # Check for -yt option
+    if [[ "$1" == "-yt" ]]; then
+        fetch_cmd="yt"
+        command=$2
+        url=$3
+    fi
+
+    # Check if required commands are available
+    for cmd in $fetch_cmd fabric pbcopy; do
+        if ! command -v $cmd &> /dev/null; then
+            echo "Error: Required command '$cmd' not found"
+            return 1
+        fi
+    done
+
+    # Execute the command and store the output
+    local output
+    if output=$($fetch_cmd "$url" | fabric -sp "$command" 2>&1); then
+        # If successful, print the output and copy to clipboard
+        echo "$output"
+        echo "$output" | pbcopy
+        echo "Output has been copied to clipboard."
+    else
+        # If there's an error, display it
+        echo "Error: $output"
+        return 1
+    fi
+}
+
+
+# git repository greeter
+last_repository=
+check_directory_for_new_repository() {
+	current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
+
+	if [ "$current_repository" ] && \
+	   [ "$current_repository" != "$last_repository" ]; then
+		onefetch
+	fi
+	last_repository=$current_repository
+}
+
+cd() {
+	builtin cd "$@"
+	check_directory_for_new_repository
+}
 
