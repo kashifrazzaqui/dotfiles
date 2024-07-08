@@ -10,19 +10,23 @@ $java\
 $nodejs\
 $nim\
 $python\
+$terraform\
 $rust\
 [](fg:#86BBD8 bg:#06969A)\
 $docker_context\
 [](fg:#06969A bg:#33658A)\
-$time\
 [ ](fg:#33658A)\
 """
 
 right_format = """
+$shell\
 $git_branch\
 $git_status\
+$git_state\
 $battery\
 $env_var\
+$localip\
+$time\
 """
 
 # Disable the blank line at the start of the prompt
@@ -82,6 +86,20 @@ symbol = ""
 disabled = true
 format = "[ $symbol $env_value]($style) "
 
+# ~/.config/starship.toml
+
+[localip]
+ssh_only = false
+style = "fg:#65647C"
+format = '@[$localipv4]($style) '
+disabled = true
+
+[shell]
+zsh_indicator = '󰰷'
+unknown_indicator = 'mystery shell'
+style = 'cyan bold'
+disabled = false
+
 [c]
 symbol = ""
 style = "bg:#86BBD8 fg:#000000"
@@ -99,12 +117,16 @@ format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:#6FC276 fg:#000000"
+style = "bg:#000000 fg:#fff192"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#6FC276 fg:#000000"
+style = "bg:#000000 fg:#fff192"
 format = '[$all_status$ahead_behind ]($style)'
+
+[git_state]
+style = "bg:#000000 fg:#fff192"
+format = '\[[\($state( $progress_current of $progress_total)\)]($style)\]'
 
 [golang]
 symbol = " "
@@ -144,10 +166,14 @@ format = '[ $symbol ($version) ]($style)'
 [python]
 symbol = " "
 style = "bg:#86BBD8 fg:#000000"
+version_format = 'v${major}.${minor}'
 format = '[ $symbol ($version) ]($style)'
+
+[terraform]
+format = '\[[$symbol$workspace]($style)\]'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#33658A"
+style = "bg:#000000"
 format = '[  $time ]($style)'
