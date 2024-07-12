@@ -18,7 +18,7 @@ function gitignore() {
 # Search for a pattern recursively in the current directory
 function search() {
     echo "searching for '$1'"
-    grep -Rains "$1" .
+    rg -Sni --text --color=always  "$1" .
 }
 
 # Reindex macOS Spotlight
