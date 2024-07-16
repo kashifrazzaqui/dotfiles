@@ -32,9 +32,9 @@ alias cp='cp -i'
 alias ln='ln -i'
 
 alias emu="./scripts/start_emulator"
-alias z="vim $DOTFILES/.zshrc"
-alias za="vim $DOTFILES/aliases.zsh"
-alias zf="vim $DOTFILES/functions.zsh"
+alias zc="vim $DOTFILES/zsh/zshrc"
+alias za="vim $DOTFILES/zsh/aliases.zsh"
+alias zf="vim $DOTFILES/zsh/functions.zsh"
 alias grephist='history|grep'
 alias venable='python3 -m venv ./venv'
 alias vactivate='source ./venv/bin/activate'

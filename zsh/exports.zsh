@@ -21,4 +21,4 @@ export LDFLAGS="-L/Users/kashifr/homebrew/lib"
 export CPPFLAGS="-I/Users/kashifr/homebrew/include"
 export PUBLIC_IP=$(curl --silent ipaddr.io)
 export TOGGLE_LAST_DIR
-export OPENAI_API_KEY=$(cat /Users/kashifr/code/dotfiles/openapi.key)
+export OPENAI_API_KEY=$(cat /Users/kashifr/code/dotfiles/keys/openapi-cli.key)

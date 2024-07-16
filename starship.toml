@@ -1,8 +1,8 @@
 format = """
-[](#FFF192)\
+[](#FF69b4)\
 $os\
 $username\
-[](bg:#966FD6 fg:#FFF192)\
+[](bg:#966FD6 fg:#FF69b4)\
 $directory\
 [](fg:#966FD6 bg:#86BBD8)\
 $c\
@@ -20,6 +20,7 @@ $docker_context\
 
 right_format = """
 $shell\
+$asdf\
 $git_branch\
 $git_status\
 $git_state\
@@ -51,7 +52,7 @@ disabled = true
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
 [os]
-style = "bg:#FFF192 fg:#000000"
+style = "bg:#FF69b4 fg:#000000"
 disabled = false # Disabled by default
 
 # This is the default symbols table.
@@ -65,7 +66,10 @@ Fedora = "🎩 "
 FreeBSD = "😈 "
 Gentoo = "🗜️ "
 Linux = "🐧 "
-Macos = " "
+# Macos = " "
+# Macos = " "
+Macos = " "
+# Macos = " "
 OpenBSD = "🐡 "
 Ubuntu = "🎯 "
 Unknown = "❓ "
@@ -167,7 +171,7 @@ format = '[ $symbol ($version) ]($style)'
 symbol = " "
 style = "bg:#86BBD8 fg:#000000"
 version_format = 'v${major}.${minor}'
-format = '[ $symbol ($version) ]($style)'
+format = '[ $symbol ($version) ($virtualenv)]($style)'
 
 [terraform]
 format = '\[[$symbol$workspace]($style)\]'

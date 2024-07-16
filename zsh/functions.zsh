@@ -255,12 +255,6 @@ function mkcd() {
     mkdir -p "$1" && cd "$1"
 }
 
-# Weather
-function weather() {
-    local location=${1:-Barnes}
-    curl "wttr.in/$location"
-}
-
 #Pretty JSON
 function json_pretty() {
     python -m json.tool < "$1" | pygmentize -l json
@@ -373,3 +367,37 @@ cd() {
     check_directory_for_new_repository
 }
 
+cachedcurl() {
+    # Check if correct number of arguments is provided
+    if [ "$#" -ne 2 ]; then
+        echo "Usage: cachedcurl <url> <cache_file>"
+        return 1
+    fi
+
+    local url="$1"
+    local cache_file="$2"
+    local max_age=300  # 5 minutes in seconds
+
+    # Check if the cache file exists and is less than 5 minutes old
+    if [ -f "$cache_file" ] && [ $(($(date +%s) - $(date -r "$cache_file" +%s))) -lt $max_age ]; then
+        # Cache is fresh, cat the file
+        cat "$cache_file"
+    else
+        # Cache is stale or doesn't exist, make a curl call
+        curl -s "$url" | tee "$cache_file"
+    fi
+}
+
+# Weather
+function weather() {
+    local location=${1:-Barnes}
+    curl "wttr.in/$location"
+}
+
+brew_recent_installs() {
+    local num_items=${1:-10}  # Default to 10 items if no argument is provided
+
+    (brew list --formula | xargs -n1 -I{} sh -c 'echo "$(stat -f "%Sm" -t "%Y-%m-%d %H:%M:%S" "$(brew --prefix)/Cellar/{}")/{}:formula"' && \
+        brew list --cask | xargs -n1 -I{} sh -c 'echo "$(stat -f "%Sm" -t "%Y-%m-%d %H:%M:%S" "$(brew --prefix)/Caskroom/{}")/{}:cask"') | \
+        sort -r | head -n "$num_items" | column -t -s '/'
+    }
