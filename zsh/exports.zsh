@@ -19,6 +19,5 @@ export PUNT_CONFIG='~/.punt'
 export DYLD_LIBRARY_PATH=/Users/kashifr/homebrew/lib:$DYLD_LIBRARY_PATH
 export LDFLAGS="-L/Users/kashifr/homebrew/lib"
 export CPPFLAGS="-I/Users/kashifr/homebrew/include"
-export PUBLIC_IP=$(curl --silent ipaddr.io)
 export TOGGLE_LAST_DIR
 export OPENAI_API_KEY=$(cat /Users/kashifr/code/dotfiles/keys/openapi-cli.key)
