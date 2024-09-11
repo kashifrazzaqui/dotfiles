@@ -28,11 +28,6 @@ function reindex() {
     sudo mdutil -ai on
 }
 
-# Change to a directory within the ~/code directory
-function code() {
-    cd ~/code/$1
-}
-
 # Change directory and list files
 function cl() {
     cd $1

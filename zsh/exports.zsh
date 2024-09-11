@@ -21,3 +21,6 @@ export LDFLAGS="-L/Users/kashifr/homebrew/lib"
 export CPPFLAGS="-I/Users/kashifr/homebrew/include"
 export TOGGLE_LAST_DIR
 export OPENAI_API_KEY=$(cat /Users/kashifr/code/dotfiles/keys/openapi-cli.key)
+export LANGCHAIN_TRAVING_V2="true"
+export LANGCHAIN_API_KEY=$OPENAI_API_KEY
+export ANTHROPIC_API_KEY=$(cat /Users/kashifr/code/dotfiles/keys/claude-notebook.key)

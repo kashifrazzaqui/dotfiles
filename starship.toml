@@ -33,6 +33,8 @@ $time\
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
+command_timeout = 600
+
 [battery]
 disabled = false
 

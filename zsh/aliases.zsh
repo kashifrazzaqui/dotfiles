@@ -49,3 +49,4 @@ alias fk="thefuck"
 alias stocks="ticker -w GME,MSTR,FBTC,TSM,NVDA,ASML,AMD,AMZN,ADBE,META,LLY,GOOG,NFLX,PG,ISRG,COST,FANUY,TER,MSFT,NIFTY,AAPL"
 alias fzf='fzf --preview="bat --color=always {}"'
 alias vimfzf='vim $(fzf -m --preview="bat --color=always {}")'
+alias z="zoxide"
